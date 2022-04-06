@@ -6,7 +6,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 127.0.0.1:3000:3000    # localhost only by default
+      - 3000:3000
+      # - 127.0.0.1:3000:3000    # localhost only by default
     links:
       - mongo:mongo
       - elasticsearch:elasticsearch
@@ -63,6 +64,22 @@ services:
 
 volumes:
   growi_data:
+    driver_opts:
+      type: none
+      device: $PWD/growi_data
+      o: bind
   mongo_configdb:
+    driver_opts:
+      type: none
+      device: $PWD/mongo_configdb
+      o: bind
   mongo_db:
+    driver_opts:
+      type: none
+      device: $PWD/mongo_db
+      o: bind
   es_data:
+    driver_opts:
+      type: none
+      device: $PWD/es_data
+      o: bind
